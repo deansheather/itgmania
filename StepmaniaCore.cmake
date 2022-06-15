@@ -380,6 +380,11 @@ elseif(LINUX)
   find_package(OpenGL REQUIRED)
 endif(WIN32) # LINUX, APPLE
 
+find_package(libusb REQUIRED)
+if (NOT LibUSB_FOUND)
+  message(FATAL_ERROR "libUSB required to compile StepMania.")
+endif()
+
 configure_file("${SM_SRC_DIR}/config.in.hpp"
                "${SM_SRC_DIR}/generated/config.hpp")
 configure_file("${SM_SRC_DIR}/verstub.in.cpp"
